@@ -1,0 +1,57 @@
+<!doctype html>
+
+<!-- 
+		 Hello, fellow developer! 
+
+		 I hacked this together and I may not have gone all the way when
+		 it comes to code quality and maintainability. Also, I suck at 
+		 CSS, but practice makes perfect, right? ;)
+
+		 If you have any improvement suggestions,  feel free to send pull
+		 requests to https://github.com/peterjaric/pixelat.ion.land
+
+		 /Peter
+	 -->
+
+<html lang="en">
+		<head>
+				<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3">
+				<meta charset="utf-8">
+				<link rel="stylesheet" href="stylesheet.css?v=4" type="text/css" charset="utf-8" />
+				<title>Pixelation Land</title>
+				<meta name="description" content="Pixel editor for tweeting monochrome sprites">
+				<meta name="author" content="Peter Jaric">
+
+				<!--[if lt IE 9]>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+				<![endif]-->
+		</head>
+
+		<body>
+				<h1>PIXELATION LAND</h1>
+				<div id="editor"></div>
+				<div class="share">
+						<a href="/" class="reset">Reset</a><br>
+						<a href="#" class="tweet">Tweet this sprite</a><br>
+						<a href="#" class="copy">Copy this sprite</a>
+				</div>
+				<div id="copy-text" class="hidden" >
+						<textarea cols="25" rows="14" id="output"></textarea>
+						<p>Copy this text and paste wherever you want.</p>
+				</div>
+				<h2>What's this?</h2>
+				<div class="about">
+						<p>
+								With this advanced tool you can create and share your own
+								monochrome sprites. Design your sprite by clicking the pixels
+								and then click "Tweet" or "Copy" (for other social platforms).</p>
+						<p>
+								The sprite editor uses modern Unicode technology to achieve
+								what once was only possible to do with a video game and a telly.</p>
+						<p>
+								Created by <a href="http://twitter.com/peterjaric">@peterjaric</a>
+						</p>
+				</div>
+				<script src="script.js"></script>
+		</body>
+</html>
