@@ -1,7 +1,13 @@
+var states = ['\u{1f3fb}', '\u{1f3fc}', '\u{1f3fd}', '\u{1f3fe}', '\u{1f3ff}']
+
 var width = 10;
 var height = 10;
 var x, y;
 var tweetLink, copyLink;
+
+var getPixelValue = function(state) {
+	return states[state];
+}
 
 var isOn = function(pixel) {
 	return pixel.classList.contains('on');
@@ -17,7 +23,10 @@ var hideCopyText = function() {
 };
 
 var clickPixel = function(e) {
-	this.classList.toggle('on');
+	//this.classList.toggle('on');
+
+	this.pixelState = (this.pixelState + 1) % states.length;
+	this.innerHTML = getPixelValue(this.pixelState);
 
 	// Hide copy text immediately, it is irrelevant now
 	hideCopyText();
@@ -33,6 +42,9 @@ var setup = function() {
       pixel.className = 'pixel off';
       pixel.id = 'pixel-' + x + '-' + y;
       pixel.onclick = clickPixel;
+			pixel.onmousedown = function(e){ e.preventDefault(); };
+			pixel.pixelState = 0;
+			pixel.innerHTML = getPixelValue(pixel.pixelState);
       editor.appendChild(pixel);
 			if (x === 0) {
 				pixel.classList.add('first');
@@ -48,7 +60,7 @@ var getShareText = function() {
     for (x = 0; x < width; x++) {
       id = 'pixel-' + x + '-' + y;
       pixel = document.getElementById(id);
-      output += (isOn(pixel) ? '\u2b1b': '\u2b1c');
+      output += pixel.innerHTML;
     }
     output += '\n';
   }
@@ -58,6 +70,7 @@ var getShareText = function() {
 
 var tweet = function(e) {
 	e.preventDefault();
+	alert('Going to Twitter...\nThe box will say -94 characters, but it will be possible to send the tweet anyway!');
   var text = getShareText();
 	location.href = 'http://twitter.com/intent/tweet?text=' + encodeURIComponent(text); 
 };
